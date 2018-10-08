@@ -11,6 +11,15 @@ from pygame.locals import *
 from gameRole import *
 import random
 
+if pygame.image.get_extended()==0:
+    print "warning:your os not support png image"
+    background_img_filename = 'resources/image/background.bmp'
+    game_over_img_filename = 'resources/image/gameover.bmp'
+    shoot_img_filename = 'resources/image/shoot.bmp'
+else:
+    background_img_filename = 'resources/image/background.png'
+    game_over_img_filename = 'resources/image/gameover.png'
+    shoot_img_filename = 'resources/image/shoot.png'
 
 # 初始化游戏
 pygame.init()
@@ -29,11 +38,9 @@ pygame.mixer.music.play(-1, 0.0)
 pygame.mixer.music.set_volume(0.25)
 
 # 载入背景图
-background = pygame.image.load('resources/image/background.png').convert()
-game_over = pygame.image.load('resources/image/gameover.png')
-
-filename = 'resources/image/shoot.png'
-plane_img = pygame.image.load(filename)
+background = pygame.image.load(background_img_filename).convert()
+game_over = pygame.image.load(game_over_img_filename)
+plane_img = pygame.image.load(shoot_img_filename)
 
 # 设置玩家相关参数
 player_rect = []
